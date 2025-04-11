@@ -447,7 +447,7 @@ async function handleFormSubmit(e) {
                 grecaptcha.reset();
             }
             document.getElementById('submit-btn').disabled = true;
-            document.body.style.overflow = 'auto';
+            document.body.style.overflowY = 'auto';
         }, 3000);
 
     } catch (error) {

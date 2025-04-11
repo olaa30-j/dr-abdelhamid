@@ -1,0 +1,233 @@
+:root {
+    -webkit-text-size-adjust: 100%;
+    --background-color--background-primary: var(--base-color-neutral--white);
+    --text-color--text-primary: var(--base-color-neutral--grey-darkest);
+    --link-color--link-primary: var(--text-color--text-primary);
+    --text-color--text-h1: var(--base-color-neutral--grey-lightest);
+    --border-color--border-primary: var(--base-color-neutral--grey-light);
+    --base-color-brand--yellow-main: #ffd705;
+    --base-color-secondary--yellow-button: #e3bf03;
+    --base-color-neutral--black: black;
+    --base-color-neutral--white: white;
+    --base-color-brand--blue-main: #214ded;
+    --base-color-secondary--blue-button: #1334ac;
+    --text-color--text-secondary: var(--base-color-neutral--white);
+    --black-archive\<deleted\|variable-dccb7db6\>: black;
+    --background-color--background-secondary: var(--base-color-neutral--beige);
+    --link-color--link-alternate: var(--text-color--text-alternate);
+    --background-color--background-tertiary: var(--base-color-neutral--grey-darkest);
+    --background-color--background-alternate: var(--base-color-neutral--black);
+    --text-color--text-alternate: var(--base-color-neutral--white);
+    --background-color--background-success: var(--base-color-system--success-green-light);
+    --text-color--text-success: var(--base-color-system--success-green);
+    --background-color--background-error: var(--base-color-system--error-red-light);
+    --text-color--text-error: var(--base-color-system--error-red);
+    --background-color--background-quaternary: var(--base-color-secondary--blue-dark);
+    --base-color-secondary--blue-darker: #000b35;
+    --base-color-brand--green-main: #2a9d8f;
+    --text-color--text-tertiary: var(--base-color-neutral--grey-additional);
+    --border-color--border-secondary: var(--base-color-brand--blue-main);
+    --base-color-secondary--yellow-tag: #ffef9b;
+    --text-color--text-quarternary: var(--base-color-neutral--grey-light);
+    --base-color-neutral--grey-lightest: #e9edfb;
+    --base-color-neutral--grey-lighter: #e7ecf1;
+    --base-color-neutral--grey-light: #ccd7e4;
+    --base-color-neutral--grey-dark: #414863;
+    --base-color-neutral--grey-darker: #383d52;
+    --base-color-neutral--grey-darkest: #272a37;
+    --base-color-neutral--beige: #f9f4ee;
+    --base-color-neutral--grey-additional: #868998;
+    --base-color-secondary--blue-dark: #0f2d6641;
+    --base-color-system--success-green: #2a9d8f;
+    --base-color-system--success-green-light: #ecfdf3;
+    --base-color-system--error-red: #b42318;
+    --base-color-system--error-red-light: #fef3f2;
+    --border-color--border-alternate: var(--base-color-neutral--black);
+    --link-color--link-secondary: var(--text-color--text-secondary);
+    --i: 0;
+    --base-dark-blue: #0f2c4e;
+    --base-canadian-blue: #3a6ea5;
+    --base-royal-purple: #5d4d7a;
+  
+  }
+  
+  
+  .font-arbic{
+    font-family: 'Lemonada', sans-serif;
+  }
+  
+  #main {
+    background-color: var(--background-color--background-quaternary);
+    overflow-x: clip;
+    background-image:
+    radial-gradient(circle farthest-corner at 15% 5%, rgba(10, 31, 61, 0.9), rgba(0, 0, 0, 0) 60%),
+    radial-gradient(circle farthest-corner at 85% 5%, rgba(10, 31, 61, 0.9), rgba(0, 0, 0, 0) 60%),
+    radial-gradient(circle farthest-corner at 85% 100%, rgba(30, 58, 138, 0.7), rgba(0, 0, 0, 0) 53%),
+    radial-gradient(circle farthest-corner at 15% 100%, rgba(30, 58, 138, 0.7), rgba(0, 0, 0, 0) 53%),
+    url("https://www.yourpracticeonline.net/editor-uploads/website-1023/6-steps-to-host-webinar-1595848081.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+  }
+  
+  .text-gradient-hasan {
+    background: linear-gradient(90deg, #ffffff 0%, #c99b30 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .card {
+    transition: transform 0.3s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-fade-out {
+    animation: fadeIn 0.5s ease-out reverse forwards;
+  }
+  
+  .loading {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  }
+  
+  .medical-card-3d {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: perspective(1000px) rotateX(15deg) translateY(0);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .home-header_lightbox {
+    will-change: transform;
+    transform-style: preserve-3d;
+  }
+  
+  .stethoscope-icon {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  /* تحسين مظهر select */
+  /* Custom bounce-in animation */
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.6s ease-out forwards;
+  }
+  
+  /* Modal transitions */
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  
+  /* Input focus effects */
+  input:focus+div i,
+  select:focus+div i {
+    color: #4299e1;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+  }
+  
+  /* Select dropdown styling */
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+  }
+  
+  .waves {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    margin-bottom: -7px;
+    min-height: 100px;
+    max-height: 150px;
+  }
+  
+  .content {
+    position: relative;
+    height: 20vh;
+    text-align: center;
+    background-color: white;
+  }
+  
+  .parallax>use {
+    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+  }
+  
+  .parallax>use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  
+  .parallax>use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  
+  .parallax>use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  
+  .parallax>use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px, 0, 0);
+    }
+  
+    100% {
+      transform: translate3d(85px, 0, 0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .waves {
+      height: 40px;
+      min-height: 40px;
+    }
+  }

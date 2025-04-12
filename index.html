@@ -12,7 +12,7 @@
   <!-- Preload critical resources -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lemonada:wght@400;600&display=swap" as="style">
   <link rel="preload" href="./assets/dr2.jpg" as="image">
-  <link rel="preload" href="./assets/test.png" as="image">
+  <link rel="preload" href="./assets/test.jpg" as="image">
   
   <!-- Preconnect to external domains -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,7 +103,7 @@
         <img src="./assets/dr2.jpg" alt="د. عبدالحميد حمد"
           class="h-12 w-12 rounded-full object-cover"
           loading="lazy" width="48" height="48">
-        <span class="font-bold hidden md:block" data-i18n="instructor-title">صحة الأعصاب</span>
+        <span class="font-bold hidden md:block" data-i18n="instructor-title">استشارى الأعصاب</span>
       </div>
   
       <!-- الأزرار -->
@@ -152,27 +152,27 @@
           </div>
 
           <!-- Countdown -->
-          <div class="my-10 animate-slide-up" data-i18n="countdown_label">
+          <div id="Countdown-container" class="my-10 animate-slide-up" data-i18n="countdown_label">
             <div class="text-lg md:text-xl lg:text-2xl mb-4 text-white/90 font-medium drop-shadow-md" id="countdown-label" data-i18n="countdown-label">
               الوقت المتبقي حتى الندوة:
             </div>
-            <div class="flex justify-center gap-3 md:gap-5 mb-10">
-              <div class="bg-white/30 md:p-4 p-2 text-center rounded-lg backdrop-blur-sm min-w-[80px] border border-white/20">
-                <div id="days" class="text-4xl font-bold text-white">00</div>
-                <div class="text-sm font-bold text-white/80 mt-1" data-i18n="days">أيام</div>
-              </div>
-              <div class="bg-white/30 md:p-4 p-2 text-center rounded-lg backdrop-blur-sm min-w-[80px] border border-white/20">
-                <div id="hours" class="text-4xl font-bold text-white">00</div>
-                <div class="text-sm font-bold text-white/80 mt-1" data-i18n="hours">ساعات</div>
-              </div>
-              <div class="bg-white/30 md:p-4 p-2 text-center rounded-lg backdrop-blur-sm min-w-[80px] border border-white/20">
-                <div id="minutes" class="text-4xl font-bold text-white">00</div>
-                <div class="text-sm font-bold text-white/80 mt-1" data-i18n="minutes">دقائق</div>
-              </div>
-              <div class="bg-white/30 md:p-4 p-2 text-center rounded-lg backdrop-blur-sm min-w-[80px] border border-white/20">
-                <div id="seconds" class="text-4xl font-bold text-white">00</div>
-                <div class="text-sm font-bold text-white/80 mt-1" data-i18n="seconds">ثواني</div>
-              </div>
+          </div>
+          <div class="flex justify-center gap-3 md:gap-5 mb-10 block" id="countdown-section">
+            <div class="bg-white/30 md:p-4 p-2 text-center rounded-lg backdrop-blur-sm min-w-[80px] border border-white/20">
+              <div id="days" class="text-4xl font-bold text-white">00</div>
+              <div class="text-sm font-bold text-white/80 mt-1" data-i18n="days">أيام</div>
+            </div>
+            <div class="bg-white/30 md:p-4 p-2 text-center rounded-lg backdrop-blur-sm min-w-[80px] border border-white/20">
+              <div id="hours" class="text-4xl font-bold text-white">00</div>
+              <div class="text-sm font-bold text-white/80 mt-1" data-i18n="hours">ساعات</div>
+            </div>
+            <div class="bg-white/30 md:p-4 p-2 text-center rounded-lg backdrop-blur-sm min-w-[80px] border border-white/20">
+              <div id="minutes" class="text-4xl font-bold text-white">00</div>
+              <div class="text-sm font-bold text-white/80 mt-1" data-i18n="minutes">دقائق</div>
+            </div>
+            <div class="bg-white/30 md:p-4 p-2 text-center rounded-lg backdrop-blur-sm min-w-[80px] border border-white/20">
+              <div id="seconds" class="text-4xl font-bold text-white">00</div>
+              <div class="text-sm font-bold text-white/80 mt-1" data-i18n="seconds">ثواني</div>
             </div>
           </div>
 
@@ -286,7 +286,7 @@
             </div>
             <div class="flex justify-center animate-slide-up">
               <div class="relative">
-                <img src="./assets/test.png" alt="د. عبدالحميد حمد"
+                <img src="./assets/test.jpg" alt="د. عبدالحميد حمد"
                   class="rounded-2xl shadow-lg w-full max-w-md border-4 border-white"
                   loading="lazy" width="400" height="500">
                 <div
@@ -501,15 +501,17 @@
   <div id="registration-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
     <!-- Background overlay with transition -->
     <div class="fixed inset-0 transition-opacity duration-300 ease-in-out" aria-hidden="true">
-      <div class="absolute inset-0 bg-gray-900 opacity-0 transition-opacity duration-300 ease-in-out"
-        id="modal-overlay"></div>
-    </div>
+      <div class="absolute inset-0 bg-gray-900 opacity-50 transition-opacity duration-300 ease-in-out" id="modal-overlay">
+        <!-- GIF خلفية متحركة -->
+        <img src="./assets/3d0f93241b4bbed25f03bcb95f5aae63.gif" class="absolute inset-0 w-full h-full object-cover opacity-10" alt="Animated Background">
+      </div>
+          </div>
 
     <!-- Modal container with transform transitions -->
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <!-- Modal content with animations -->
       <div
-        class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full opacity-0 translate-y-10 scale-95"
+        class="inline-block align-bottom bg-gradient-to-b from-white to-blue-50 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full opacity-0 translate-y-10 scale-95"
         id="modal-content">
         <div class="px-6 py-6 sm:px-8 sm:pb-8">
           <!-- Close button -->
@@ -578,7 +580,7 @@
                   <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                     <i class="fas fa-envelope text-gray-400"></i>
                   </div>
-                  <input type="email" id="email" name="email"
+                  <input type="email" id="email" name="email" required
                     class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 pr-10 text-gray-900 focus:outline-none focus:ring-2 focus:ring-medical-accent focus:border-transparent">
                 </div>
                 <p id="email-error" class="mt-1 text-sm text-red-600 hidden"></p>
@@ -605,28 +607,30 @@
           <!-- Thank You Message (Hidden by default) -->
           <div id="thank-you-message" class="hidden p-6 text-center">
             <div class="animate-bounce-in">
-              <i class="fas fa-check-circle text-green-500 text-5xl mb-4 animate-pulse"></i>
+              <div class="mx-auto"><img src="./assets/c341f0e09c407d671e7498151764ec98.gif" width="70%" height="30%" class="mx-auto"></div>
               <h3 class="text-xl font-bold text-gray-900 mb-2">تم التسجيل بنجاح!</h3>
-              <p class="text-gray-700 mb-4">سيتم إرسال تفاصيل الندوة إلى واتسابك</p>
+              <p class="text-gray-700 mb-2">سيتم إرسال تفاصيل الندوة إلى البريد الالكترونى</p>
 
+              <h5 class="py-3 border border-dashed border-[#0a313de6] rounded-lg mb-2 w-3/4 mx-auto font-md">تابعنا</h5>
               <!-- مواقع التواصل الاجتماعي -->
-              <div id="success-social-media" class="hidden flex justify-center space-x-4 my-6">
-                <a href="#" class="bg-blue-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">
+              <div id="success-social-media" class="social-hover-effect hidden flex justify-center gap-3 my-4">
+                <a href="https://www.facebook.com/p/%D8%A7%D9%84%D8%AF%D9%83%D8%AA%D9%88%D8%B1-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AD%D9%85%D9%8A%D8%AF-%D8%AD%D9%85%D8%AF-100091952990054/" class="relative text-white w-10 h-10 flex items-center justify-center rounded-full">
                   <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="bg-blue-400 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">
+                <a href="https://twitter.com/AbdulHamidHamad?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="relative text-white w-10 h-10 flex items-center justify-center rounded-full">
                   <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" class="bg-red-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">
+                <a href="https://www.youtube.com/@DrAbdulHamidHamad" class="relative text-white w-10 h-10 flex items-center justify-center rounded-full">
                   <i class="fab fa-youtube"></i>
                 </a>
-                <a href="#" class="bg-gray-800 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">
-                  <i class="fab fa-linkedin-in"></i>
+                <a href="https://www.tiktok.com/@dr.abdulhamidhamad?_t=ZM-8ug5wLScqd5&_r=1" class="relative text-white w-10 h-10 flex items-center justify-center rounded-full">
+                  <i class="fa-brands fa-tiktok"></i>
                 </a>
               </div>
+              
 
               <button id="close-after-success" 
-                class="mt-4 bg-medical-primary hover:bg-medical-secondary text-white font-medium py-2 px-6 rounded-lg transition-all">
+                class="mt-2 bg-[#0a313de6] hover:bg-[#0a313da6] text-white font-medium py-2 px-6 rounded-lg transition-all text-center m-auto">
                 رائع، شكرًا لك
               </button>
             </div>
@@ -642,7 +646,7 @@
       <div class="max-w-4xl mx-auto text-center text-gray-600">
         <div class="flex items-center justify-center mb-4 space-x-4 space-x-reverse">
           <!-- فيسبوك -->
-          <a href="https://facebook.com/Dr.Abdulhamid.Hamad" target="_blank"
+          <a href="https://www.facebook.com/p/%D8%A7%D9%84%D8%AF%D9%83%D8%AA%D9%88%D8%B1-%D8%B9%D8%A8%D8%AF-%D8%A7%D9%84%D8%AD%D9%85%D9%8A%D8%AF-%D8%AD%D9%85%D8%AF-100091952990054/" target="_blank"
               class="text-gray-600 hover:text-[#1877F2] transition-colors duration-300"
               aria-label="صفحة الفيسبوك">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

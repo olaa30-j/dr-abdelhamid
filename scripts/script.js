@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Initialize countdown timer
 function initCountdown() {
-    const webinarDate = new Date('December 15, 2025 20:00:00 GMT+0200').getTime();
+    const webinarDate = new Date('April 12, 2025 13:00:00 GMT+0200').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();

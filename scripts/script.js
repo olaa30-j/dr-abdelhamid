@@ -388,16 +388,12 @@ document.getElementById('registration-modal').addEventListener('click', (e) => {
 async function handleFormSubmit(e) {
     e.preventDefault();
 
-    // Validate fields
-    const isNameValid = validateName();
-    const isPhoneValid = validatePhone();
-    const isEmailValid = validateEmail();
-
-    if (!isNameValid || !isPhoneValid || !isEmailValid) {
+    // التحقق من الحقول
+    if (!validateName() || !validatePhone() || !validateEmail()) {
         return;
     }
 
-    // Prevent rapid submissions
+    // منع الإرسال المتكرر
     const now = Date.now();
     if (now - lastSubmissionTime < 5000) {
         alert('الرجاء الانتظار 5 ثواني بين كل محاولة');
@@ -410,48 +406,49 @@ async function handleFormSubmit(e) {
     const originalText = btn.textContent;
 
     try {
-        // Verify reCAPTCHA
-        if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse()) {
+        // التحقق من reCAPTCHA
+        if (!recaptchaLoaded || !grecaptcha.getResponse()) {
             throw new Error('الرجاء التحقق من أنك لست روبوت');
         }
 
+        // تحضير البيانات
         const countrySelect = document.getElementById('country');
         const selectedCountry = CONFIG.COUNTRIES.find(c => c.code === countrySelect.value);
+        const phoneInput = document.getElementById('phone').value.replace(/\D/g, '');
 
         const formData = {
             name: document.getElementById('name').value.trim(),
-            whatsapp: document.getElementById('full-phone-number').value,
+            whatsapp: `+${selectedCountry.dialCode}${phoneInput}`,
             email: document.getElementById('email')?.value.trim() || null,
             country: selectedCountry.name,
             website: CONFIG.WEBSITE_NAME,
             'g-recaptcha-response': grecaptcha.getResponse()
         };
 
-        // Update UI
+        // تحديث واجهة المستخدم
         btn.disabled = true;
         btn.innerHTML = '<span class="loading"></span> جاري التسجيل...';
-        // Submit to Google Apps Script
-        const result = await submitToGoogleAppsScript(formData);
 
+        // إرسال البيانات
+        const result = await submitToGoogleAppsScript(formData);
+        
         if (result.status !== 'success') {
             throw new Error(result.message || 'فشل في التسجيل');
         }
 
-        // Send WhatsApp message
-        await sendWhatsAppMessage(formData.whatsapp, formData.name);
+        // إرسال رسالة الواتساب
+        const whatsappResult = await sendWhatsAppMessage(formData.whatsapp, formData.name);
+        
+        if (!whatsappResult.success) {
+            console.warn('تحذير:', whatsappResult.message);
+            // لا توقف العملية إذا فشل الواتساب
+        }
 
-        // Reset form after 3 seconds
-        setTimeout(() => {
-            form.reset();
-            if (typeof grecaptcha !== 'undefined') {
-                grecaptcha.reset();
-            }
-            document.getElementById('submit-btn').disabled = true;
-            document.body.style.overflowY = 'auto';
-        }, 3000);
+        // عرض رسالة النجاح
+        handleSuccess();
 
     } catch (error) {
-        console.error('Form Error:', error);
+        console.error('خطأ في النموذج:', error);
         alert(`حدث خطأ: ${error.message}`);
     } finally {
         btn.disabled = false;
@@ -501,17 +498,51 @@ async function submitToGoogleAppsScript(data) {
 
 // Send WhatsApp message
 async function sendWhatsAppMessage(number, name) {
-    const message = WHATSAPP_MESSAGE_TEMPLATE.replace('{name}', name);
-    const whatsappUrl = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-
-    // Open WhatsApp in new tab
-    window.open(whatsappUrl, '_blank');
-
-    // Copy link to clipboard
     try {
-        await navigator.clipboard.writeText(whatsappUrl);
-    } catch (err) {
-        console.warn('Failed to copy to clipboard:', err);
+        const message = WHATSAPP_MESSAGE_TEMPLATE
+            .replace('{name}', name)
+            .replace('{webinar_title}', CONFIG.WEBINAR_TITLE)
+            .replace('{webinar_date}', CONFIG.WEBINAR_DATE)
+            .replace('{webinar_time}', CONFIG.WEBINAR_TIME)
+            .replace('{webinar_link}', CONFIG.WEBINAR_LINK)
+            .replace('{company_number}', CONFIG.COMPANY_NUMBER)
+            .replace('{company_email}', CONFIG.COMPANY_EMAIL);
+
+        // إضافة رمز الدولة إذا لم يكن موجوداً
+        if (!number.startsWith('+')) {
+            const countrySelect = document.getElementById('country');
+            const selectedCountry = CONFIG.COUNTRIES.find(c => c.code === countrySelect.value);
+            if (selectedCountry) {
+                number = `+${selectedCountry.dialCode}${number.replace(/\D/g, '')}`;
+            }
+        }
+
+        // تنظيف رقم الهاتف
+        const cleanNumber = number.replace(/\D/g, '');
+        
+        // إنشاء رابط الواتساب
+        const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+        
+        // فتح نافذة جديدة
+        const newWindow = window.open(whatsappUrl, '_blank');
+        
+        // التأكد من فتح النافذة
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            throw new Error('تم منع فتح نافذة الواتساب. يرجى السماح بالنوافذ المنبثقة.');
+        }
+        
+        return { success: true, url: whatsappUrl };
+    } catch (error) {
+        console.error('فشل إرسال رسالة الواتساب:', error);
+        
+        // عرض بديل إذا فشل فتح النافذة المنبثقة
+        alert(`يمكنك التواصل معنا مباشرة على الواتساب:\n${CONFIG.COMPANY_NUMBER}`);
+        
+        return { 
+            success: false, 
+            message: error.message,
+            fallbackUrl: `https://wa.me/${CONFIG.COMPANY_NUMBER}`
+        };
     }
 }
 

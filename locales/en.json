@@ -1,4 +1,5 @@
 {
+  "recaptcha_text": "I'm not a robot",
   "title": "Neuropathic Pain Treatment",
   "subtitle": "Latest developments in diagnosing and treating chronic neuropathic pain",
   "date": "December 15, 2025 - 8:00 PM Cairo Time",
@@ -55,5 +56,10 @@
   "form_country": "Country",
   "form-phone": "WhatsApp Number",
   "form-email": "Email Address (Optional)",
-  "form-submit": "Confirm Registration"
+  "form-submit": "Confirm Registration",
+  "register-modal-subtitle":"Fill in the following information to confirm your reservation.",
+  "error_name_required": "Full name is required.",
+  "error_phone_required": "WhatsApp number is required.",
+  "error_email_invalid": "Please enter a valid email address.",
+  "error_recaptcha_required": "Please verify that you are not a robot."
 }

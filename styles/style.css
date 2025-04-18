@@ -58,18 +58,21 @@
   
   #main {
     background-color: var(--background-color--background-quaternary);
-    overflow-x: clip;
+    overflow-x: hidden;
+  
     background-image:
-    radial-gradient(circle farthest-corner at 15% 5%, rgba(10, 31, 61, 0.9), rgba(0, 0, 0, 0) 60%),
-    radial-gradient(circle farthest-corner at 85% 5%, rgba(10, 31, 61, 0.9), rgba(0, 0, 0, 0) 60%),
-    radial-gradient(circle farthest-corner at 85% 100%, rgba(30, 58, 138, 0.7), rgba(0, 0, 0, 0) 53%),
-    radial-gradient(circle farthest-corner at 15% 100%, rgba(30, 58, 138, 0.7), rgba(0, 0, 0, 0) 53%),
-    url("https://www.yourpracticeonline.net/editor-uploads/website-1023/6-steps-to-host-webinar-1595848081.jpg");
+      radial-gradient(circle farthest-corner at 15% 5%, rgba(10, 31, 61, 0.9), rgba(0, 0, 0, 0) 60%),
+      radial-gradient(circle farthest-corner at 85% 5%, rgba(10, 31, 61, 0.9), rgba(0, 0, 0, 0) 60%),
+      radial-gradient(circle farthest-corner at 85% 100%, rgba(30, 58, 138, 0.7), rgba(0, 0, 0, 0) 53%),
+      radial-gradient(circle farthest-corner at 15% 100%, rgba(30, 58, 138, 0.7), rgba(0, 0, 0, 0) 53%),
+      url("https://www.yourpracticeonline.net/editor-uploads/website-1023/6-steps-to-host-webinar-1595848081.jpg");
+  
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    overflow-x: hidden;
+    background-attachment: fixed;  
   }
+  
   
   .text-gradient-hasan {
     background: linear-gradient(90deg, #ffffff 0%, #c99b30 100%);

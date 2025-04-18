@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Countdown initialization
 function initCountdown() {
-    const webinarDate = new Date('April 14, 2025 13:00:00 GMT+0200').getTime();
+    const webinarDate = new Date('April 24, 2025 13:00:00 GMT+0200').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -93,7 +93,6 @@ function initTabs() {
     const tabs = {
         'about-instructor': document.getElementById('about-instructor-content'),
         'webinar-info': document.getElementById('webinar-info-content'),
-        'agenda': document.getElementById('agenda-content')
     };
 
     function switchTab(tabName) {
@@ -111,7 +110,6 @@ function initTabs() {
 
     document.getElementById('about-instructor-btn').addEventListener('click', () => switchTab('about-instructor'));
     document.getElementById('webinar-info-btn').addEventListener('click', () => switchTab('webinar-info'));
-    document.getElementById('agenda-btn').addEventListener('click', () => switchTab('agenda'));
 
     switchTab('about-instructor');
 }

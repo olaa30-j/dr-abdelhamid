@@ -1,11 +1,11 @@
 {
     "name": "ندوة طبية",
-    "short_name": "ندوة الألم العصبي",
+    "short_name": "علاج ألم الأعصاب السكري",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#1a365d",
     "theme_color": "#2c5282",
-    "description": "ندوة طبية متخصصة في علاج الألم العصبي بأحدث الطرق العلمية",
+    "description": "ندوة طبية متخصصة في علاج ألم الأعصاب السكري بأحدث الطرق العلمية",
     "icons": [
       {
         "src": "/assets/icon-192.png",
